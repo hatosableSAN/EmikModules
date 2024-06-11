@@ -60,8 +60,8 @@ namespace ReformedRoleReversalModule
             // Assign the seed to the wires.
             int[] wires = GetWires(ref left, ref leftmost, ref lookup, ref mod, ref add, ref baseN);
 
-            if (Application.isEditor)
-                Override(out wires, out lookup, out mod, out add, out left, out leftmost, out discard, out append, out baseN);
+            // if (Application.isEditor)
+            //     Override(out wires, out lookup, out mod, out add, out left, out leftmost, out discard, out append, out baseN);
 
             int i2 = init.Conditions.GetLength(0);
 
@@ -102,8 +102,9 @@ namespace ReformedRoleReversalModule
         private int[] GetWires(ref bool left, ref bool leftmost, ref int lookup, ref int mod, ref int add, ref char[] baseN)
         {
             // 10% of the time, the string is less than 9 characters long. Append accordingly.
-            while (Seed.Length < 9)
+            while (Seed.Length < 9){ 
                 Seed = left ? '0' + Seed : Seed + '0';
+            };
 
             // The amount of wires is calculated with modulo 3 to 7, and then add 3 to 10-modulo (inclusive).
             int[] wires = new int[(int.Parse(Seed) % mod) + add];
@@ -120,7 +121,7 @@ namespace ReformedRoleReversalModule
             string[] log = new string[wires.Length];
 
             for (int i = 0; i < wires.Length; i++)
-                log[i] += i == wires.Length - 1 ? "and " + Arrays.Colors[wires[i]] : Arrays.Colors[wires[i]];
+                log[i] += Arrays.Colors[wires[i]];
 
             Debug.LogFormat("[Reformed Role Reversal #{0}]: The wires are {1}.", init.ModuleId, log.Join(", "));
 
@@ -288,8 +289,10 @@ namespace ReformedRoleReversalModule
 
                     Array.Resize(ref wires, wires.Length + appendValue.Length);
 
-                    while (Seed.Length < 9)
+                    while (Seed.Length < 9){
                         Seed = append ? 'X' + Seed : Seed + 'X';
+                        Debug.LogFormat("loop");
+                    };
 
                     // Append right.
                     if (!append)

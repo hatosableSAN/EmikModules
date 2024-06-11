@@ -53,7 +53,7 @@ public class ReformedRoleReversalCoroutineHandler : MonoBehaviour
         if (generated > 64)
             return;
 
-        Reversal.ScreenText.text = "Loading...\n";
+        Reversal.ScreenText.text = "読込中...\n";
 
         for (int i = 0; i < generated; i++)
             Reversal.ScreenText.text += i % 32 == 0 ? "\n|" : "|";
@@ -77,21 +77,21 @@ public class ReformedRoleReversalCoroutineHandler : MonoBehaviour
         // Either state it is solved...
         if (init.Solved)
         {
-            text = init.Interact.CorrectAnswer == null ? string.Format("[Reformed Role Reversal #{0}]\n\nAn internal error has occured\nwhilst trying to calculate the\nanswer. Module solved!", init.ModuleId % 10000)
-                                                       : string.Format("[Reformed Role Reversal #{0}]\n\nThe correct wire was cut.\nModule solved!", init.ModuleId % 10000);
+            text = init.Interact.CorrectAnswer == null ? string.Format("[Reformed Role Reversal #{0}]\n\n回答計算中に内部エラーが発生しました。\nモジュールは解除されます！", init.ModuleId % 10000)
+                                                       : string.Format("[Reformed Role Reversal #{0}]\n\nあなたは正しいワイヤを切りました。\nモジュールは解除されます！", init.ModuleId % 10000);
         }
 
         // ...show the currently submitted wire...
         else if (isSelectingWire)
         {
-            text = string.Format("[Wire Selected: {0}]\n\nPlease press the screen\nto cut the wire.", wireSelected);
+            text = string.Format("[選択中のワイヤ：{0}]\n\n画面を押して\nワイヤを切ってください。", wireSelected);
             Reversal.ScreenText.color = new Color32((byte)(192 + (wireSelected * 7)), 192, (byte)(255 - (wireSelected * 7)), 255);
         }
 
         // ...or display the manual.
         else
         {
-            text = string.Format("[{0}{1}]\n\n{2}", instructionX == 0 ? "Tutorial" : (instructionX + 2).ToString() + " wires, ", instructionX == 0 ? string.Empty : Arrays.Ordinals[instructionY] + " condition", Algorithms.Format(init.Conditions[instructionX, instructionY].Text));
+            text = string.Format("[{0}{1}]\n\n{2}", instructionX == 0 ? "チュートリアル" : (instructionX + 2).ToString() + "本ワイヤ、", instructionX == 0 ? string.Empty : Arrays.Ordinals[instructionY] + "の条件", Algorithms.Format(init.Conditions[instructionX, instructionY].Text));
             Reversal.ScreenText.color = new Color32((byte)(192 + (instructionX * 9)), 192, (byte)(192 + (instructionY * 9)), 255);
         }
 
@@ -114,6 +114,7 @@ public class ReformedRoleReversalCoroutineHandler : MonoBehaviour
 
         do
         {
+           
             keepAnimating = false;
 
             // Fade out when solved.

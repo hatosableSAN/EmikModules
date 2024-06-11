@@ -24,9 +24,9 @@ namespace ReformedRoleReversalModule
 
             Condition condition = new Condition
             {
-                Text = firstCondition ? string.Format("If there's at {0} {1} {2}, skip to condition {3}.", inversion ? "most" : "least", parameters[0], Arrays.Edgework[parameters[1]], parameters[2])
-                                      : appendFromArray || discard ? string.Format("If there's at {0} {1} {2}, {3} {4}{5} wire{6}.", inversion ? "most" : "least", parameters[0], Arrays.Edgework[parameters[1]], discard ? (rnd.NextDouble() > 0.5 ? "discard the" : "append the unincluded") : "append the unincluded", Math.Abs(parameters[2]) - 2 != 1 ? Math.Abs(parameters[2] - 2).ToString() + ' ' : string.Empty, leftmost ? "leftmost" : "rightmost", Math.Abs(parameters[2]) - 2 != 1 ? "s" : string.Empty)
-                                                                   : string.Format("If there's at {0} {1} {2}, append {3} {4} wire{5}.", inversion ? "most" : "least", parameters[0], Arrays.Edgework[parameters[1]], Math.Abs(parameters[2] - 2).ToString(), Arrays.Colors[randomColor], Math.Abs(parameters[2]) - 2 != 1 ? "s" : string.Empty)
+                Text = firstCondition ? string.Format("この爆弾に{0}{1}つの{2}がある場合、条件{3}へ飛ぶ。", inversion ? "多くとも" : "少なくとも", parameters[0], Arrays.Edgework[parameters[1]], parameters[2])
+                                      : appendFromArray || discard ? string.Format("{0}{1}個の{2}がある場合、{5}{4}の{3}。", inversion ? "最大" : "少なくとも", parameters[0], Arrays.Edgework[parameters[1]], discard ? (rnd.NextDouble() > 0.5 ? "ワイヤを取り除く" : "まだ含まれていないワイヤを追加する") : "まだ含まれていないワイヤを追加する", Math.Abs(parameters[2]) - 2 != 1 ? Math.Abs(parameters[2] - 2).ToString() + '本' : string.Empty, leftmost ? "左端" : "右端")
+                                                                   : string.Format("{0}{1}個の{2}がある場合、{3}本の{4}のワイヤを追加する。", inversion ? "最大" : "少なくとも", parameters[0], Arrays.Edgework[parameters[1]], Math.Abs(parameters[2] - 2).ToString(), Arrays.Colors[randomColor])
             };
 
             if (!isCorrectIndex)
@@ -59,9 +59,9 @@ namespace ReformedRoleReversalModule
 
             Condition condition = new Condition
             {
-                Text = firstCondition ? string.Format("If there's {0} {1} than {2}, skip to condition {3}.", more ? "more" : "less", Arrays.Edgework[parameters[0]], Arrays.Edgework[parameters[1]], parameters[2])
-                                      : appendFromArray || discard ? string.Format("If there's {0} {1} than {2}, {3} {4}{5} wire{6}.", more ? "more" : "less", Arrays.Edgework[parameters[0]], Arrays.Edgework[parameters[1]], discard ? (rnd.NextDouble() > 0.5 ? "discard the" : "append the unincluded") : "append the unincluded", Math.Abs(parameters[2]) - 2 != 1 ? Math.Abs(parameters[2] - 2).ToString() + ' ' : string.Empty, leftmost ? "leftmost" : "rightmost", Math.Abs(parameters[2]) - 2 != 1 ? "s" : string.Empty)
-                                                                   : string.Format("If there's {0} {1} than {2}, append {3} {4} wire{5}.", more ? "more" : "less", Arrays.Edgework[parameters[0]], Arrays.Edgework[parameters[1]], Math.Abs(parameters[2] - 2).ToString(), Arrays.Colors[randomColor], Math.Abs(parameters[2]) - 2 != 1 ? "s" : string.Empty)
+                Text = firstCondition ? string.Format("{1}が{2}より{0}場合、条件{3}に飛ぶ。", more ? "多い" : "少ない", Arrays.Edgework[parameters[0]], Arrays.Edgework[parameters[1]], parameters[2])
+                                      : appendFromArray || discard ? string.Format("{1}が{2}より{0}場合、 {5}{4}の{3}。", more ? "多い" : "少ない", Arrays.Edgework[parameters[0]], Arrays.Edgework[parameters[1]], discard ? (rnd.NextDouble() > 0.5 ? "ワイヤを取り除く" : "まだ含まれていないワイヤを追加する") : "まだ含まれていないワイヤを追加する", Math.Abs(parameters[2]) - 2 != 1 ? Math.Abs(parameters[2] - 2).ToString() + '本' : string.Empty, leftmost ? "左端" : "右端")
+                                                                   : string.Format("{2}より{1}が{0}場合、{3}本の{4}のワイヤを追加する。", more ? "多い" : "少ない", Arrays.Edgework[parameters[0]], Arrays.Edgework[parameters[1]], Math.Abs(parameters[2] - 2).ToString(), Arrays.Colors[randomColor])
             };
 
             if (!isCorrectIndex)
@@ -94,9 +94,9 @@ namespace ReformedRoleReversalModule
 
             Condition condition = new Condition
             {
-                Text = firstCondition ? string.Format("If {0} {1} {2} {3} exist, skip to condition {4}.", Arrays.Edgework[parameters[0]], orAnd ? "or" : "and", Arrays.Edgework[parameters[1]], inversion ? "don't" : "do", parameters[2])
-                                      : appendFromArray || discard ? string.Format("If {0} {1} {2} {3} exist, {4} {5}{6} wire{7}.", Arrays.Edgework[parameters[0]], orAnd ? "or" : "and", Arrays.Edgework[parameters[1]], inversion ? "don't" : "do", discard ? (rnd.NextDouble() > 0.5 ? "discard the" : "append the unincluded") : "append the unincluded", Math.Abs(parameters[2]) - 2 != 1 ? Math.Abs(parameters[2] - 2).ToString() + ' ' : string.Empty, leftmost ? "leftmost" : "rightmost", Math.Abs(parameters[2]) - 2 != 1 ? "s" : string.Empty)
-                                                                   : string.Format("If {0} {1} {2} {3} exist, append {4} {5} wire{6}.", Arrays.Edgework[parameters[0]], orAnd ? "or" : "and", Arrays.Edgework[parameters[1]], inversion ? "don't" : "do", Math.Abs(parameters[2] - 2).ToString(), Arrays.Colors[randomColor], Math.Abs(parameters[2]) - 2 != 1 ? "s" : string.Empty)
+                Text = firstCondition ? string.Format("{0}{1}{2}が存在{3}場合、条件{4}に飛ぶ。", Arrays.Edgework[parameters[0]], orAnd ? "もしくは" : "と", Arrays.Edgework[parameters[1]], inversion ? "しない" : "する", parameters[2])
+                                      : appendFromArray || discard ? string.Format("{0}{1}{2}が存在{3}場合、{6}{5}の{4}。", Arrays.Edgework[parameters[0]], orAnd ? "もしくは" : "と", Arrays.Edgework[parameters[1]], inversion ? "しない" : "する", discard ? (rnd.NextDouble() > 0.5 ? "ワイヤを取り除く" : "まだ含まれていないワイヤを追加する") : "まだ含まれていないワイヤを追加する", Math.Abs(parameters[2]) - 2 != 1 ? Math.Abs(parameters[2] - 2).ToString() + '本' : string.Empty, leftmost ? "左端" : "右端")
+                                                                   : string.Format("{0}{1}{2}が存在{3}場合、{4}本の{5}のワイヤを追加する。", Arrays.Edgework[parameters[0]], orAnd ? "もしくは" : "と", Arrays.Edgework[parameters[1]], inversion ? "しない" : "する", Math.Abs(parameters[2] - 2).ToString(), Arrays.Colors[randomColor])
             };
 
             if (!isCorrectIndex)
@@ -129,9 +129,9 @@ namespace ReformedRoleReversalModule
 
             Condition condition = new Condition
             {
-                Text = firstCondition ? string.Format("If there's {0} {1} {2}, skip to condition {3}.", inversion ? "not exactly" : "exactly", parameters[0], Arrays.Edgework[parameters[1]], parameters[2])
-                                      : appendFromArray || discard ? string.Format("If there's {0} {1} {2}, {3} {4}{5} wire{6}.", inversion ? "not exactly" : "exactly", parameters[0], Arrays.Edgework[parameters[1]], discard ? (rnd.NextDouble() > 0.5 ? "discard the" : "append the unincluded") : "append the unincluded", Math.Abs(parameters[2]) - 2 != 1 ? Math.Abs(parameters[2] - 2).ToString() + ' ' : string.Empty, leftmost ? "leftmost" : "rightmost", Math.Abs(parameters[2]) - 2 != 1 ? "s" : string.Empty)
-                                                                   : string.Format("If there's {0} {1} {2}, append {3} {4} wire{5}.", inversion ? "not exactly" : "exactly", parameters[0], Arrays.Edgework[parameters[1]], Math.Abs(parameters[2] - 2).ToString(), Arrays.Colors[randomColor], Math.Abs(parameters[2]) - 2 != 1 ? "s" : string.Empty)
+                Text = firstCondition ? string.Format("{2}がちょうど{1}つ{0}場合、条件{3}に飛ぶ。", inversion ? "ない" : "ある", parameters[0], Arrays.Edgework[parameters[1]], parameters[2])
+                                      : appendFromArray || discard ? string.Format("{2}がちょうど{1}つ{0}場合、{5}{4}の{3}。", inversion ? "ない" : "ある", parameters[0], Arrays.Edgework[parameters[1]], discard ? (rnd.NextDouble() > 0.5 ? "ワイヤを取り除く" : "まだ含まれていないワイヤを追加する") : "まだ含まれていないワイヤを追加する", Math.Abs(parameters[2]) - 2 != 1 ? Math.Abs(parameters[2] - 2).ToString() + '本' : string.Empty, leftmost ? "左端" : "右端")
+                                                                   : string.Format("{2}がちょうど{1}つ{0}場合、{4}本の{5}のワイヤを追加する。", inversion ? "ない" : "ある", parameters[0], Arrays.Edgework[parameters[1]], Math.Abs(parameters[2] - 2).ToString(), Arrays.Colors[randomColor])
             };
 
             if (!isCorrectIndex)
@@ -159,7 +159,7 @@ namespace ReformedRoleReversalModule
             int[] parameters = Algorithms.Random(length: 2, min: 0, max: Arrays.Colors.Length);
             Condition condition = new Condition
             {
-                Text = string.Format("If a {0} wire is directly right of a {1} wire, cut the first {0} wire.", Arrays.Colors[parameters[0]], Arrays.Colors[parameters[1]])
+                Text = string.Format("{0}のワイヤが{1}のワイヤの右隣にある場合、最初の{0}のワイヤを切る。", Arrays.Colors[parameters[0]], Arrays.Colors[parameters[1]])
             };
 
             if (!isCorrectIndex)
@@ -180,7 +180,7 @@ namespace ReformedRoleReversalModule
             int[] parameters = Algorithms.Random(length: 4, min: 0, max: Arrays.Colors.Length);
             Condition condition = new Condition
             {
-                Text = string.Format("If a {0} wire is directly left of a {1}, {2}, or {3} wire, cut the first {1}, {2}, or {3} wire.", Arrays.Colors[parameters[0]], Arrays.Colors[parameters[1]], Arrays.Colors[parameters[2]], Arrays.Colors[parameters[3]])
+                Text = string.Format("{0}のワイヤが{1}か{2}か{3}のワイヤの左隣にある場合、最初の{1}か{2}か{3}のワイヤを切る。", Arrays.Colors[parameters[0]], Arrays.Colors[parameters[1]], Arrays.Colors[parameters[2]], Arrays.Colors[parameters[3]])
             };
 
             if (!isCorrectIndex)
@@ -203,7 +203,7 @@ namespace ReformedRoleReversalModule
             int[] parameters = Algorithms.Random(length: 3, min: 0, max: wires.Length + 1);
             Condition condition = new Condition
             {
-                Text = string.Format("If the {0}, {1}, or {2} wire share any color, cut the first wire that isn't the shared color.", Arrays.Ordinals[parameters[0]], Arrays.Ordinals[parameters[1]], Arrays.Ordinals[parameters[2]])
+                Text = string.Format("{0}か{1}か{2}のワイヤの色が共通する場合、色が異なる最初のワイヤを切る。", Arrays.Ordinals[parameters[0]], Arrays.Ordinals[parameters[1]], Arrays.Ordinals[parameters[2]])
             };
 
             if (!isCorrectIndex)
@@ -225,7 +225,7 @@ namespace ReformedRoleReversalModule
             int parameter = rnd.Next((int)Math.Ceiling((float)wires.Length / 2), wires.Length);
             Condition condition = new Condition
             {
-                Text = string.Format("If there are {0} wires with matching colors, cut the last wire that isn't the matching color.", parameter)
+                Text = string.Format("色が一致しているワイヤが{0}本ある場合、色が異なる最後のワイヤを切る。", parameter)
             };
 
             if (!isCorrectIndex)
@@ -248,7 +248,7 @@ namespace ReformedRoleReversalModule
             bool highest = rnd.NextDouble() > 0.5;
             Condition condition = new Condition
             {
-                Text = string.Format("If all wires are unique, cut the wire with the {0} value.", highest ? "highest" : "lowest")
+                Text = string.Format("すべてのワイヤの色が異なる場合、値が最も{0}ワイヤを切る。", highest ? "高い" : "低い")
             };
 
             if (!isCorrectIndex)
@@ -272,7 +272,7 @@ namespace ReformedRoleReversalModule
 
             Condition condition = new Condition
             {
-                Text = string.Format("If all wires are unique except for 0 or 1 {0} with matching colors, cut the first wire with the {1} value.", Arrays.Tuplets[parameter], lowest ? "lowest" : "highest")
+                Text = string.Format("色が一致する{0}本1組のワイヤの組を0~1組除き、すべてのワイヤの色が異なる場合、値が最も{1}ワイヤを切る。", Arrays.Tuplets[parameter], lowest ? "低い" : "高い")
             };
 
             if (!isCorrectIndex)
@@ -306,7 +306,7 @@ namespace ReformedRoleReversalModule
 
             Condition condition = new Condition
             {
-                Text = string.Format("If all wires aren't unique excluding {0} of them, cut the last wire whose value {1} the median{2}.", parameter, revertedWires.Length % 2 == 1 ? "is" : "are", wires.Length % 2 == 1 ? string.Empty : "s")
+                Text = string.Format("{0}本を除き、すべてのワイヤの色が異なる場合、値が中央値となる最後のワイヤを切る。", parameter)
             };
 
             if (!isCorrectIndex)
@@ -344,7 +344,7 @@ namespace ReformedRoleReversalModule
 
             Condition condition = new Condition
             {
-                Text = string.Format("If there {0} any {1} wires, cut the first {2}ish wire.", inversion ? "aren't" : "are", Arrays.Colors[parameters[0]], Arrays.GroupedColors[parameters[1]])
+                Text = string.Format("{1}のワイヤが{0}場合、最初の{1}系のワイヤを切る。", inversion ? "ない" : "ある", Arrays.Colors[parameters[0]], Arrays.GroupedColors[parameters[1]])
             };
 
             if (!isCorrectIndex)
@@ -365,7 +365,7 @@ namespace ReformedRoleReversalModule
 
             Condition condition = new Condition
             {
-                Text = string.Format("If there are {0} or more {1}ish wires, cut the wire after the first {2}ish wire.", parameters[0], Arrays.GroupedColors[parameters[1]], Arrays.GroupedColors[parameters[2]])
+                Text = string.Format("{1}系のワイヤが{0}本以上ある場合、最初の{2}系のワイヤより右にあるワイヤを切る。", parameters[0], Arrays.GroupedColors[parameters[1]], Arrays.GroupedColors[parameters[2]])
             };
 
             if (!isCorrectIndex)
@@ -389,7 +389,7 @@ namespace ReformedRoleReversalModule
             int parameter = rnd.Next(0, Arrays.Colors.Length);
             Condition condition = new Condition
             {
-                Text = string.Format("If there is only 1 {0} wire, cut that wire.", Arrays.Colors[parameter])
+                Text = string.Format("{0}のワイヤが1本だけある場合、そのワイヤを切る。", Arrays.Colors[parameter])
             };
 
             if (!isCorrectIndex)
@@ -408,7 +408,7 @@ namespace ReformedRoleReversalModule
 
             Condition condition = new Condition
             {
-                Text = string.Format("If all values are in {0} order, cut the wire with the {1} {2} value.", ascending ? "ascending" : "decending", first ? "first" : "last", odd ? "odd" : "even")
+                Text = string.Format("すべての値が{0}順に並んでいる場合、{2}の値を持つ{1}のワイヤを切る。", ascending ? "昇" : "降", first ? "最初" : "最後", odd ? "奇数" : "偶数")
             };
 
             if (!isCorrectIndex)
@@ -435,7 +435,7 @@ namespace ReformedRoleReversalModule
 
             Condition condition = new Condition
             {
-                Text = string.Format("If a {0}ish wire neighbours 2 {1}ish wires, cut the {2} instance of that middle wire.", Arrays.GroupedColors[parameters[0]], Arrays.GroupedColors[parameters[1]], first ? "first" : "last")
+                Text = string.Format("両隣に2本の{1}系のワイヤがある{0}系のワイヤがある場合、そのような集合のうち{2}のワイヤを切る。", Arrays.GroupedColors[parameters[0]], Arrays.GroupedColors[parameters[1]], first ? "最初" : "最後")
             };
 
             if (!isCorrectIndex)
@@ -458,7 +458,7 @@ namespace ReformedRoleReversalModule
 
             Condition condition = new Condition
             {
-                Text = string.Format("If the {0} wire has the {1} value, cut the first {2}-valued wire.", Arrays.Ordinals[parameter], highestIf ? "highest" : "lowest", highestThen ? "highest" : "lowest")
+                Text = string.Format("{0}のワイヤの値が{1}の場合、最初の{2}の値を持つワイヤを切る。", Arrays.Ordinals[parameter], highestIf ? "最高" : "最低", highestThen ? "最高" : "最低")
             };
 
             if (!isCorrectIndex)
@@ -481,7 +481,7 @@ namespace ReformedRoleReversalModule
 
             Condition condition = new Condition
             {
-                Text = string.Format("If there's a wire with a value difference of 5 from the {0} wire, cut the {1} wire matching that description.", Arrays.Ordinals[parameter], first ? "first" : "last")
+                Text = string.Format("{0}のワイヤとの差が5である値を持つワイヤがある場合、その説明に合致する{1}のワイヤを切る。", Arrays.Ordinals[parameter], first ? "最初" : "最後")
             };
 
             if (!isCorrectIndex)
@@ -502,7 +502,7 @@ namespace ReformedRoleReversalModule
 
             Condition condition = new Condition
             {
-                Text = string.Format("If the {0} wire is {1}, cut the {2} {1} wire.", Arrays.Ordinals[parameters[0]], Arrays.Colors[parameters[1]], first ? "first" : "last")
+                Text = string.Format("{0}のワイヤが{1}の場合、{2}の{1}のワイヤを切る。", Arrays.Ordinals[parameters[0]], Arrays.Colors[parameters[1]], first ? "最初" : "最後")
             };
 
             if (!isCorrectIndex)
@@ -522,7 +522,7 @@ namespace ReformedRoleReversalModule
 
             Condition condition = new Condition
             {
-                Text = string.Format("If the sum of all wire's values are divisible by {0}, cut the last {1}ish wire.", divisible, Arrays.GroupedColors[parameter])
+                Text = string.Format("すべてのワイヤの値の和が{0}で割り切れる場合、最後の{1}系のワイヤを切る。", divisible, Arrays.GroupedColors[parameter])
             };
 
             if (!isCorrectIndex)
@@ -545,7 +545,7 @@ namespace ReformedRoleReversalModule
 
             Condition condition = new Condition
             {
-                Text = string.Format("If the {0} wire has a {1} value than the {2} wire, cut the first wire that has a value difference of 5 from any of the other wires.", Arrays.Ordinals[parameters[0]], higher ? "higher" : "lower", Arrays.Ordinals[parameters[1]])
+                Text = string.Format("{0}のワイヤの値が{2}のワイヤよりも{1}場合、あるワイヤと値の差が5になる最初のワイヤを切る。", Arrays.Ordinals[parameters[0]], higher ? "高い" : "低い", Arrays.Ordinals[parameters[1]])
             };
 
             if (!isCorrectIndex)
@@ -572,7 +572,7 @@ namespace ReformedRoleReversalModule
             bool more = rnd.NextDouble() > 0.5;
             Condition condition = new Condition
             {
-                Text = string.Format("If there are {0} blueish wires than purpleish wires, cut the last wire that has a value difference of 5 from any of the other wires.", more ? "more" : "less")
+                Text = string.Format("{0} 紫系のワイヤより青系のワイヤの方が{0}場合、あるワイヤと値の差が5になる最後のワイヤを切る。", more ? "多い" : "少ない")
             };
 
             if (!isCorrectIndex)
@@ -601,7 +601,7 @@ namespace ReformedRoleReversalModule
             int parameter = rnd.Next(0, wires.Length);
             Condition condition = new Condition
             {
-                Text = string.Format("If an indicator with vanilla labels exist sharing any letters in \"Role\", cut the {0} wire.", Arrays.Ordinals[parameter])
+                Text = string.Format("「Role」内にあるいずれかの英字がラベルにあるバニラのインジケーターがある場合、{0}のワイヤを切る。", Arrays.Ordinals[parameter])
             };
 
             if (!isCorrectIndex)
@@ -624,7 +624,7 @@ namespace ReformedRoleReversalModule
             int parameter = rnd.Next(0, wires.Length);
             Condition condition = new Condition
             {
-                Text = string.Format("If there isn't only 1 module with their name containing \"Role Reversal\", cut the {0} wire, also thanks!", Arrays.Ordinals[parameter])
+                Text = string.Format("名前に「Role Reversal」が含まれるモジュールが1つのみではない場合、{0}のワイヤを切る。毎度ありがとう！", Arrays.Ordinals[parameter])
             };
 
             if (!isCorrectIndex)
@@ -641,7 +641,7 @@ namespace ReformedRoleReversalModule
             int parameter = rnd.Next(0, wires.Length);
             Condition condition = new Condition
             {
-                Text = string.Format("If the serial number contains a letter in \"Reformed Role Reversal\", cut the {0} wire.", Arrays.Ordinals[parameter])
+                Text = string.Format("シリアルナンバーに「Reformed Role Reversal」内にあるいずれかの英字が含まれる場合、{0}のワイヤを切る。", Arrays.Ordinals[parameter])
             };
 
             if (!isCorrectIndex)
@@ -665,7 +665,7 @@ namespace ReformedRoleReversalModule
             int[] parameters = Algorithms.Random(length: 2, min: 0, max: Arrays.IndicatorNames.Length);
             Condition condition = new Condition
             {
-                Text = string.Format("If {0} indicator or {1} indicator exist, cut the wire matching the amount of indicators present.", Arrays.IndicatorNames[parameters[0]], Arrays.IndicatorNames[parameters[1]])
+                Text = string.Format("{0}インジケーターか{1}インジケーターがある場合、存在するインジケーターの個数と一致するワイヤを切る。", Arrays.IndicatorNames[parameters[0]], Arrays.IndicatorNames[parameters[1]])
             };
 
             if (!isCorrectIndex)
@@ -684,7 +684,7 @@ namespace ReformedRoleReversalModule
 
             Condition condition = new Condition
             {
-                Text = string.Format("If there are less {0} than {1} wires, cut the last non-{2}ish wire.", Arrays.Edgework[parameters[0]], Arrays.Colors[parameters[1]], Arrays.GroupedColors[parameters[1]])
+                Text = string.Format("{1}のワイヤより{0}の個数が少ない場合、最後の{2}系ではないワイヤを切る。", Arrays.Edgework[parameters[0]], Arrays.Colors[parameters[1]], Arrays.GroupedColors[parameters[1]])
             };
 
             if (!isCorrectIndex)
@@ -705,7 +705,7 @@ namespace ReformedRoleReversalModule
 
             Condition condition = new Condition
             {
-                Text = string.Format("If there are less {0} than {1} wires, cut the first non-{1} wire.", Arrays.Edgework[parameters[0]], Arrays.Colors[parameters[1]])
+                Text = string.Format("{1}のワイヤより{0}の個数が少ない場合、最初の{1}ではないワイヤを切る。", Arrays.Edgework[parameters[0]], Arrays.Colors[parameters[1]])
             };
 
             if (!isCorrectIndex)
@@ -724,7 +724,7 @@ namespace ReformedRoleReversalModule
 
             Condition condition = new Condition
             {
-                Text = string.Format("If a {0} and {1} wire lie adjacent to each other, cut the wire to the {2} of the {3} matching pair.", Arrays.Colors[wires[parameters[0]]], Arrays.Colors[wires[parameters[1]]], left ? "left" : "right", first ? "first" : "last")
+                Text = string.Format("{0}と{1}のワイヤが連続して並んでいる場合、条件に合致する{3}のペアの{2}側のワイヤを切る。.", Arrays.Colors[wires[parameters[0]]], Arrays.Colors[wires[parameters[1]]], left ? "左" : "右", first ? "最初" : "最後")
             };
 
             if (!isCorrectIndex)
@@ -778,15 +778,15 @@ namespace ReformedRoleReversalModule
             switch (parameter)
             {
                 case 0:
-                    condition.Text = string.Format("If the serial number has a digit matching any amount of wires present excluding 0, cut the last wire that is most common.");
+                    condition.Text = string.Format("シリアルナンバーに、0を除くいずれかの色のワイヤの本数と一致する数字がある場合、個数が最多の色のうち最後のワイヤを切る。");
                     break;
 
                 case 1:
-                    condition.Text = string.Format("If the serial number has a digit matching the amount of the most common wires or total wires, cut the first wire that is least common.");
+                    condition.Text = string.Format("シリアルナンバーに、最多の色のワイヤの本数またはワイヤの総本数と一致する数字がある場合、個数が最少の色のうち最初のワイヤを切る。");
                     break;
 
                 case 2:
-                    condition.Text = string.Format("If the serial number has a digit matching any of the values present, cut the wire position corresponding to the earliest matching value.");
+                    condition.Text = string.Format("シリアルナンバーに、存在する値のいずれかと一致する数字がある場合、一致する最初の値に対応する位置にあるワイヤを切る。");
                     break;
             }
 
@@ -851,7 +851,7 @@ namespace ReformedRoleReversalModule
             int parameter = rnd.Next(0, wires.Length);
             Condition condition = new Condition
             {
-                Text = string.Format("Cut the {0} wire.", Arrays.Ordinals[parameter])
+                Text = string.Format("{0}のワイヤを切る。", Arrays.Ordinals[parameter])
             };
 
             if (!isCorrectIndex)
@@ -869,7 +869,7 @@ namespace ReformedRoleReversalModule
 
             Condition condition = new Condition
             {
-                Text = string.Format("Cut the {0} {1} wire.", first ? "first" : "last", Arrays.Colors[parameter])
+                Text = string.Format("{0}の{1}のワイヤを切る。", first ? "最初" : "最後", Arrays.Colors[parameter])
             };
 
             if (!isCorrectIndex)
@@ -887,7 +887,7 @@ namespace ReformedRoleReversalModule
             bool highest = rnd.NextDouble() > 0.5, firstLast = rnd.NextDouble() > 0.5;
             Condition condition = new Condition
             {
-                Text = string.Format("Cut the {0} {1}-valued wire.", firstLast ? "first" : "last", highest ? "highest" : "lowest")
+                Text = string.Format("値が{1}である{0}のワイヤを切る。", firstLast ? "最初" : "最後", highest ? "最高" : "最低")
             };
 
             if (!isCorrectIndex)
@@ -910,7 +910,7 @@ namespace ReformedRoleReversalModule
 
             Condition condition = new Condition
             {
-                Text = string.Format("Cut the {0} {1}ish wire.", first ? "first" : "last", Arrays.GroupedColors[parameter])
+                Text = string.Format("{0}の{1}系のワイヤを切る。", first ? "最初" : "最後", Arrays.GroupedColors[parameter])
             };
 
             if (!isCorrectIndex)

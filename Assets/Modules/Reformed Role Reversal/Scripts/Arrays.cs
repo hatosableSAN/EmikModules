@@ -53,17 +53,17 @@ namespace ReformedRoleReversalModule
 
         private static readonly string[] indicatorNames = new string[11]
         {
-            "a BOB",
-            "a CAR",
-            "a CLR",
-            "an FRK",
-            "an FRQ",
-            "an IND",
-            "an MSA",
-            "an NSA",
-            "an SIG",
-            "an SND",
-            "a TRN",
+            "BOB",
+            "CAR",
+            "CLR",
+            "FRK",
+            "FRQ",
+            "IND",
+            "MSA",
+            "NSA",
+            "SIG",
+            "SND",
+            "TRN",
         };
 
         /// <summary>
@@ -85,26 +85,26 @@ namespace ReformedRoleReversalModule
 
         private static readonly string[] edgework = new string[20]
         {
-            "batteries",
-            "AA batteries",
-            "D batteries",
-            "battery holders",
-            "indicators",
-            "lit indicators",
-            "unlit indicators",
-            "indicators sharing a letter in \"Role\"",
-            "port plates",
-            "unique ports",
-            "duplicate ports",
-            "ports",
-            "numbers in the serial number",
-            "letters in the serial number",
-            "vowels in the serial number",
-            "consonants in the serial number",
-            "total modules (excluding needies)",
-            "total modules (including needies)",
-            "needy modules",
-            "modules with their name containing \"Role Reversal\""
+            "バッテリー",
+            "単三バッテリー",
+            "単一バッテリー",
+            "バッテリーホルダー",
+            "インジケーター",
+            "点灯インジケーター",
+            "消灯インジケーター",
+            "「Role」のいずれかの文字を含むインジケーター",
+            "ポートプレート",
+            "unique ポート",
+            "重複するポート",
+            "ポート",
+            "シリアルナンバーの数字",
+            "シリアルナンバーの文字",
+            "シリアルナンバーの母音",
+            "シリアルナンバーの子音",
+            "合計モジュール数 (特殊含まない)",
+            "合計モジュール数 (特殊含む)",
+            "特殊モジュール",
+            "「Role Reversal」のいずれかの文字を含む英名のモジュール"
         };
 
         /// <summary>
@@ -114,16 +114,16 @@ namespace ReformedRoleReversalModule
 
         private static readonly string[] colors = new string[10]
         {
-            "navy",
-            "lapis",
-            "blue",
-            "sky",
-            "teal",
-            "plum",
-            "violet",
-            "purple",
-            "magenta",
-            "lavender"
+            "紺色",
+            "瑠璃色",
+            "青色",
+            "空色",
+            "青緑色",
+            "梅色",
+            "菫色",
+            "紫色",
+            "マゼンタ",
+            "藤色"
         };
 
         /// <summary>
@@ -133,16 +133,16 @@ namespace ReformedRoleReversalModule
 
         private static readonly string[] groupedColors = new string[10]
         {
-            "blue",
-            "blue",
-            "blue",
-            "blue",
-            "blue",
-            "purple",
-            "purple",
-            "purple",
-            "purple",
-            "purple"
+            "青",
+            "青",
+            "青",
+            "青",
+            "青",
+            "紫",
+            "紫",
+            "紫",
+            "紫",
+            "紫"
         };
 
         /// <summary>
@@ -152,15 +152,15 @@ namespace ReformedRoleReversalModule
 
         private static readonly string[] ordinals = new string[9]
         {
-            "first",
-            "second",
-            "third",
-            "4th",
-            "5th",
-            "6th",
-            "7th",
-            "8th",
-            "9th"
+            "一番目",
+            "二番目",
+            "三番目",
+            "四番目",
+            "五番目",
+            "六番目",
+            "七番目",
+            "八番目",
+            "九番目",
         };
 
         /// <summary>
@@ -170,15 +170,15 @@ namespace ReformedRoleReversalModule
 
         private static readonly string[] tuplets = new string[9]
         {
-            "monuple",
-            "couple",
-            "triple",
-            "quadruple",
-            "quintuple",
-            "sextuple",
-            "septuple",
-            "octuple",
-            "nonuple"
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
         };
 
         /// <summary>
@@ -196,18 +196,18 @@ namespace ReformedRoleReversalModule
         /// <returns>The formatted condition array for the tutorial.</returns>
         internal Condition[] GetTutorial(List<int> buttonOrder, int baseN, ref bool left, ref int mod, ref int add, ref bool leftmost, ref int offset, ref bool discard, ref bool append)
         {
-            string[] buttonText = { "left", "down", "up", "right" };
+            string[] buttonText = { "左", "下", "上", "右" };
 
             return new Condition[]
             {
-            new Condition { Text = "Regarding Reformed Role Reversal\n\nNavigate using the " + (Random.Range(0, 1f) > 0.5 ? buttonText[buttonOrder.IndexOf(2)] + " and " + buttonText[buttonOrder.IndexOf(1)] : buttonText[buttonOrder.IndexOf(1)] + " and " + buttonText[buttonOrder.IndexOf(2)]) + " arrow buttons." },
-            new Condition { Text = "Look around the screen and locate the seed. Convert it from Base-" + baseN + " to Base-10. Add 0's to the " + (left ? "left" : "right") + " of this number until you have 9 digits." },
-            new Condition { Text = "Take the seed modulo " + mod + " and add " + add + ", call it X. Take the " + (leftmost ? "leftmost" : "rightmost") + " X digits from the base-10 seed. With lookup #" + offset + ", convert digits to colors to get wires." },
-            new Condition { Text = "Jump to the set of conditions with the amount of wires with the bottom screen and press " + buttonText[buttonOrder.IndexOf(2)] + " if the condition is false." },
-            new Condition { Text = "When told to " + (discard ? "discard" : "append") + " wires, " + (discard ? string.Empty : "add the wires to the " + (append ? "left, then" : "right, then")) + " refer to the set of conditions with the new amount of wires." },
-            new Condition { Text = discard ? "The term \"append\" is faulty and broken. Replace every instance of \"append unincluded\" with \"discard\", and follow the condition from there." : "The term \"unincluded\" refers to any wire which both is from the base-10 seed that wasn't included and also the wire not sharing color with any currently present wires." },
-            new Condition { Text = "Once the first condition that applies has been discovered, enter submission mode by pressing either the " + buttonText[buttonOrder.IndexOf(0)] + " or " + buttonText[buttonOrder.IndexOf(3)] + " arrow button." },
-            new Condition { Text = "NOTE: If the condition specifies to cut or append a nonexistent wire, skip it instead. Good luck!~ (" + version + ")" }
+            new Condition { Text = "モジュール詳細：Reformed Role Reversal\n\n" + (Random.Range(0, 1f) > 0.5 ? buttonText[buttonOrder.IndexOf(2)] + "と" + buttonText[buttonOrder.IndexOf(1)] : buttonText[buttonOrder.IndexOf(1)] + "と " + buttonText[buttonOrder.IndexOf(2)]) + "矢印ボタンを使用して画面内を移動する。" },
+            new Condition { Text = "画面の周囲を見回し、シード値を特定する。これを" + baseN + "進数から10進数に変換する。その後、9桁になるまで" + (left ? "左" : "右") + "に0を追加する。" },
+            new Condition { Text = "シード値を" + mod + "で割った余りを求め、" + add + "を足す。これをXとする。9桁のシード値から" + (leftmost ? "左端" : "右端") + "X個分の数字を取得する。参照表#" + offset + "を使って各数字を色に変換し、ワイヤの集まりを得る。" },
+            new Condition { Text = "下画面にあるワイヤの総本数の条件セットに向かい、表示された条件が偽の場合は" + buttonText[buttonOrder.IndexOf(2)] + "を押す。" },
+            new Condition { Text = "ワイヤを「" + (discard ? "取り除く" : "追加する") + "」ように指示された場合、" + (discard ? string.Empty : "ワイヤを" + (append ? "左端" : "右端") + "に追加し、") + "新しいワイヤの総本数の条件セットを参照する。" },
+            new Condition { Text = discard ? "「追加する」指示は偽物であり壊れている。「まだ含まれていないワイヤを追加する」指示は「取り除く」指示に置き換えたうえで、その条件を確認すること。" : "「まだ含まれていないワイヤ」とは、10進数のシード値のうち、初期セットに含まれなかったかつ現存するワイヤと色が被らないワイヤのことである。" },
+            new Condition { Text = "合致する最初の条件を見つけたら、" + buttonText[buttonOrder.IndexOf(0)] + "または" + buttonText[buttonOrder.IndexOf(3)] + "ボタンを押して、送信モードに入る。" },
+            new Condition { Text = "注意：存在しないワイヤを切ったり追加するように指示された場合、その条件は無視すること。頑張って！(" + version + ")" }
             };
         }
 
